@@ -1,0 +1,9 @@
+nav{
+    background : red;
+   width: auto;
+   height: 10px;
+   possition : fixed;
+}
+h1{
+    color : pink;
+}
