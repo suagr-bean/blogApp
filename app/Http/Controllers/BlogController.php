@@ -13,14 +13,32 @@ class BlogController extends Controller{
             'content' => $request->input('content'),
               'time' => $request->input('time')
               ];
-               // 会将数据直接输出到页面，并终止后续代码执行
-            
-     Blog::create($data);
+           Blog::create($data);  
+           
+     }
+   public function update(Request $request){//根据id查询数据
+    if($request->isMethod('get')){
+      return view('update');
+    } else if($request->isMethod('post')){
       
+      $seach =$request->input("id");
+      
+      $data=Blog::find($seach);
+      
+      return view('update',['data'=>$data]);
     }
-    public function delete (){
-      Blog::destroy(2,3,4);
+   }
+   public function change(Request $request){
+    //修改数据
+    $id=$request->id;
+    $time=$request->time;
+    $update= Blog::find($id);
+    $update->title=$request->title;
+    $update->time=$request->time;
+    $update->content=$request->content;
+    $update->save();
 
-    }
+   }
+    
 }
 
