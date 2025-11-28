@@ -11,7 +11,7 @@ class BlogController extends Controller{
       
       
       $data= Blog::all();
-      return view('blog',compact('data'));
+      return view('home',compact('data'));
     }
     public function creates(Request $request){//增加数据
       $data = [

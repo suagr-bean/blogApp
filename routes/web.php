@@ -20,9 +20,11 @@ Route::get('register',function (){
 })->name("register");
 Route::post("/register",[RegisterController::class,"reg"]);
 Route::get('/blog', [BlogController::class, 'read'])->name("blog");
+Route::get('/home',[BlogController::class,'read']);
 Route::post('/create', [BlogController::class, 'creates']);
 Route::get('/delete',[BlogController::class,'delete']);
 Route::match(['get','post'],'/update',[BlogController::class,'update']);
 Route::post('/change ',[BlogController::class,"change"]);
+
    
 

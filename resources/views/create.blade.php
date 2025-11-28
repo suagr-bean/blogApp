@@ -3,7 +3,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     </<head>
     <body>
+        
      <div id ="body">
+        <x-top/>
         <input type="file" id="file">
         <form action="/create" method="post">
             @csrf 
@@ -16,41 +18,6 @@
 </form>
     <body>
         <style>
-           html{
-            overflow:hidden;
-           }
-            #body{
-                background:#ffa5;
-                height:100vh;
-                width:auto; 
-                
-            }
-            #file{
-                margin-top:30px;
-            }
-            button{
-                position:absolute;
-                right:30px;
-                bottom:30px;
-                width:50px;
-                height:50px;
-            }
-            #title,#time{
-                margin-left:20px;
-                width:300px;
-                height:18px;
-                margin-top:30px;
-            }
-            #content{
-            margin-top:10px;
-            margin-left:20px;
-            width:300px;
-            height:60vh;
-            }
-            
-           textarea {
-            width:80vw;
-            height:60vh;
-           }
+           
         </style>
 </html>

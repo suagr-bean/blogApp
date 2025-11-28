@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body>
+    
    <div id="body">
      <h3>注册</h3>
     <form action="register" method=post>

@@ -5,23 +5,7 @@
 </head>
 <body>
     <div id="blog">
-        <div class="top">
-       
-        <a href="/login">登录</a>
-        
-
-       <button id ="nav">≡</button>
-       <h1></h1>
-       @auth
-       <button id="name">{{Auth::user()->name}}</button>
-       @else
-       <button id="name">未登录</button>
-       @endauth
-       <div id="send">
-        <a href="/send">发布</a></br>
-        <a href="/update">修改</a>
-       </div>
-     </div>
+        <x-top/>
        
         <div id="show">
           
