@@ -6,25 +6,42 @@
 <body>
     <div id="blog">
         <div class="top">
-        <h1>解放日记blog</h1>
+       
+        <a href="/login">登录</a>
+        
+
        <button id ="nav">≡</button>
+       <h1></h1>
+       @auth
+       <button id="name">{{Auth::user()->name}}</button>
+       @else
+       <button id="name">未登录</button>
+       @endauth
+       <div id="send">
+        <a href="/send">发布</a></br>
+        <a href="/update">修改</a>
+       </div>
      </div>
+       
         <div id="show">
+          
         <div id="page" class="none">
             <h3 >解放日记</h3>
-            <button id="back">≡</button>
+            <button id="back"><</button>
 
-            <h3>文章目录</h3>
+            <h4>文章目录</h4>
             @foreach($data as $item )
-                <p id="menu{{$item->id}}" onclick="show({{$item->id}})">{{$item->title}}</p>
+                <p id="menu" onclick="show({{$item->id}})">{{$item->title}}</p>
                 
             @endforeach
         </div>
+        
         <div class="showcontent">
+            
             <h3 id="text"></h3>
             <h5 id="time"></h5>
          <p id="content" ></p>
-         <button id="next">下一篇</button>
+         
         </div>
 </div>
      </div>

@@ -1,0 +1,5 @@
+开发文档 
+因为我第一次写laravel 默认有user表的
+但是我自己创建了一个注册表 
+登录验证用的auth需要去改一下config
+auth 把原本默认的user换成register表
