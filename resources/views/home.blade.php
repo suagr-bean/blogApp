@@ -24,9 +24,13 @@
     <x-content :data="$data" />
     <div id="menucont" class="none">
    
-    <x-menu :data="$data"/>
+    <x-menu :data=$data />
     
     </div>
+    <script>
+        window.number=0;
+        window.data=@json($data);
+    </script>
 </body>
 
 <script>
@@ -47,9 +51,8 @@
         sidebar.classList.add("none");
         const button =document.getElementById("nav");
         button.textContent="<";
-        
-       }
-       
+         }
+         window.update();
    });
      
 </script>
