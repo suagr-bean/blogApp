@@ -6,6 +6,6 @@
 <p class="p-3 leading-normal text-xl">
     {{$content??""}}<p>
 <div>
-<style>
+<script>
     
-</style>
+</script>

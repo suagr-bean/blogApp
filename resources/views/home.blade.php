@@ -4,38 +4,54 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <style>
-    #menu-block{
+    .block{
         position:fixed;
-        background:blue;
-        top:0;
+        background:#fdf6e3;
+        top:72px;
         left:0;
         height:100vh;
         width:100%;
         display:block;      
     }
-    #menu-none{
+    .none{
         display:none;
+
     }
 </style>
 <body>
     
     <x-top />
-    <x-content title="测试" time="10" content="测试"/>
-    <div id="menu-none">
-    @foreach($data as $title )
-    <x-menu  title="{{$title->title}}"/>
-    @endforeach
+    <x-content :data="$data" />
+    <div id="menucont" class="none">
+   
+    <x-menu :data="$data"/>
+    
     </div>
+</body>
 
 <script>
-    document.addEventListener("DOMContentLoaded",function(){
-    const block=document.getElementById("menu-none");
-    const col=document.getElementById("colmenu");
-    col.addEventListener('click',function(){
+   window.number=0;
+   document.addEventListener('click', function(e) {
+    if (e.target.matches('#nav')) {//改变隐藏菜单显示
+        const sidebar = document.querySelector('#menucont');
+        var button=e.target;
+        sidebar.classList.toggle("block");
+        sidebar.classList.toggle("none");
+        button.textContent=sidebar.classList.contains('block')?'>':'<';
+        }
+     if(e.target.matches("#menu-number")){
+        const number =e.target.getAttribute('data-value');
+        window.number=number;
+      const sidebar=document.querySelector('#menucont');
+        sidebar.classList.remove("block");
+        sidebar.classList.add("none");
+        const button =document.getElementById("nav");
+        button.textContent="<";
+        
+       }
        
-        block.classList.toggle("menu-block");
-    });
-});
+   });
+     
 </script>
-</body>
+
 </html>
