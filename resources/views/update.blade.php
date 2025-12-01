@@ -1,5 +1,11 @@
 <! DOCTYPE html>
+<head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <head><meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
 <body>
+    <x-top title="修改" topButton="/"></x-top>
     <form action="/update" method="post">
     @csrf
     <input type="text" name="number">
@@ -16,10 +22,7 @@
 </form>
 </body>
 <style>
-#title{
-    Width:100%;
-    height:40vh;
-}
+
 
 </style>
 </html>.

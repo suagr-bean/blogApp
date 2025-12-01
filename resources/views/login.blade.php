@@ -1,61 +1,46 @@
 <!DOCTYPE html>
 <head> 
     <meta name="viewport"content="width=device-width,initial-scale=1">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <x-top/>
-<div id="body">
-    <h3>登录页面</h3>
+<body class="">
+    <x-top  topButton="<">登录</x-top>
+<div class="flex flex-col ">
+    <h3 class="text-center text-3xl mt-10"></h3>
     <form action="/login" method=post>
         @csrf
-        <input name="user" type=text class="user" placeholder="用户名">
-        <input name="password"class="password" type=password placeholder="密码">
-         
-
-        <button class="submit" type="submit" >登录</button>
+        <input class="ml-20 h-10 mt-30 w-50"  name="user" type=text  placeholder="用户名">
+        <input  class="ml-20 h-10 mt-10 w-50"name="password"type=password placeholder="密码">
+  
+        <button id="login-but" type="submit" >登录</button>
+     </div>
 </form>
-        <button class="register" id="control">注册</button>
+        <button  id="control">注册</button>
 </div>
-    
-        
+         
 
 </body>
 <style>
-#body{
-    margin:0;
-    width:350px;
-    height:650px;
-    background:orange;
+#control{
+    width:130px;
+    height:60px;
+    margin-top:40px;
+margin-left:110px;
+font-size:20px;
+padding:6px;
+border:2px solid;
+border-radius:30px;
 }
-html h3{
-    padding:0;
-    margin:0;
-}
-
-
-.user{
-    width:200px;
-    height:35px;
-    margin-left:80px;
-    margin-top:180px;
-}
-.password{
-    width:200px;
-    height:35px;
-    margin-left:80px;
-    margin-top:50px;
-}
-.submit{
- margin-left:150px;
-margin-top:60px;
- width:50px;
- height:30px;
-}
-.register{
-    margin-left:150px;
-    margin-top:30px;
-    width:50px;
-    height:30px;
+ #login-but{
+    
+    height:60px;
+    width:130px;
+ margin-left:110px;
+ margin-top:60px;
+  font-size:20px;
+  padding:6px;
+  border:2px solid;
+  border-radius:30px;
 }
 </style>
 <script>
@@ -64,6 +49,12 @@ margin-top:60px;
         
         window.location.href="{{route('register')}}";
     });
+    document.addEventListener('click',function (e){
+       const nav=e.target.matches("#nav");
+       if(nav){
+        window.location.href="/home";
+       }
+    })
    
 </script>
 

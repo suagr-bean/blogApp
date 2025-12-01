@@ -6,23 +6,37 @@
 <style>
     .block{
         position:fixed;
-        background:#fdf6e3;
+        background:#f8ecec ;
         top:72px;
         left:0;
-        height:100vh;
+        height:83vh;
         width:100%;
-        display:block;      
+        display:block;  
+        overflow-y:auto; 
+       
     }
     .none{
+        transform : translateY(100px);
         display:none;
 
+    }
+    body{
+        width:360px;
+        position:relative;
+    }
+    #home{
+        width:360px;
     }
 </style>
 <body>
     
-    <x-top />
-    <x-content :data="$data" />
+    <x-top topButton="≡" home="true">解放日记</x-top>
+    <x-setting/>
+    <div id="home">
+    
+    <x-content :data="$data" ></x-content>
     <div id="menucont" class="none">
+    <div>
    
     <x-menu :data=$data />
     
@@ -36,21 +50,30 @@
 <script>
    window.number=0;
    document.addEventListener('click', function(e) {
+      const text=e.target.matches('#nav');
+         
     if (e.target.matches('#nav')) {//改变隐藏菜单显示
         const sidebar = document.querySelector('#menucont');
-        var button=e.target;
+        const  button=e.target;
+        
+        button.textContent="=";
+        
         sidebar.classList.toggle("block");
         sidebar.classList.toggle("none");
-        button.textContent=sidebar.classList.contains('block')?'>':'<';
+        button.textContent=sidebar.classList.contains('block')?'×':'≡';
         }
-     if(e.target.matches("#menu-number")){
-        const number =e.target.getAttribute('data-value');
+        const li=e.target.closest('li[data-value]');
+        
+     if(li){
+        const number =li.dataset.value;//li是个对象
+        
         window.number=number;
+       
       const sidebar=document.querySelector('#menucont');
         sidebar.classList.remove("block");
         sidebar.classList.add("none");
         const button =document.getElementById("nav");
-        button.textContent="<";
+         button.textContent="≡";
          }
          window.update();
    });

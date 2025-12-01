@@ -1,10 +1,22 @@
-<div class=" w-full flex flex-col h-130 overflow-y-auto">
-<h2 id="cont-title"class="p-3">
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
+<div class=" w-full flex flex-col h-130 overflow-y-auto 
+">
+<h2 id="cont-title"class="mt-3 p-3 text-xl w-full h-15 ">
 </h2>
-<h3 id="cont-time"class="   p-1  mt:3">
+
+<h3 id="cont-time"class="w-full p-3 text-base h-4 mt-3 ">
  </h3>
-<p  id="cont-content"class="mt-4 flex-1 ">
+<p  id="cont-content"class=" text-base w-full p-3 mt-4 flex:0.6 ">
     <p>
+<p class="">
+  没有评论
+</p>
+<from>
+<input type="text" placeholder="评论">
+<button class="border text-base ">提交</button>
+</from>
 <div>
 <style>
     #con-title{

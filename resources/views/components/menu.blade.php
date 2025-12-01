@@ -1,19 +1,25 @@
-<div id="menu">
+<div id="menu" >
 
-<h2 class="text-2xl ml-10 text-black-600">目录</h2>
+<h2 class="text-2xl ml-40 text-black-600 mt-6">目录</h2>
 
 @foreach($data??[] as $item)
-<ol><li class="text-indigo-600  ">
-<p  id="menu-number" data-value="{{$item->number}}"
-class="ml-5 text-base w-100 mt-2 ml-4">{{$item->title}}</p>
-</li><ol class>
+<ol class=>
+    <li  data-value="{{$item->number}}"
+     class="active:translate-y-1 ml-10 text-black-600 border  rounded-3xl mt-6 mb-4 w-70 h-40 p-2 shadow-2xl">
+<p  
+class=" text-base w-60 p-2 text-2xl">{{$item->title}}</p>
+<p>{{$item->time}} 
+    <button class=" ml-3 border ">作者 </button>
+  </p>
+<p class="text-base mt-1 line-clamp-2  ">{{$item->content}} </p>
+</li>
+<ol >
 @endforeach
 </div>
 <style>
     #menu{
         
-        width:200px;
-        height:auto;
+        
         display:flex;
         flex-direction:column;
     }
