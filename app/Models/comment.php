@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class comment extends Model{
   protected $table = 'comment';
-  protected $fillable=["number","comment","username"];
+  protected $fillable=["title","comment","username"];
   public function blog(){
-   return $this->belongsTo(Blog::class,'number','number');
+   return $this->belongsTo(Blog::class,'title','title');
   }
 }

@@ -12,7 +12,7 @@
         <form action="/create" method="post">
             @csrf 
        
-        <input class="text-xl w-full h-10 p-3 mt-10 " type="text" name="number" placeholder="id">
+        
         <input  class="text-2xl w-full h-12   p-3 "type="text" name="title" placeholder="标题">
         @Auth
         <input type=hidden name=userName value="{{Auth::user()->name}}">

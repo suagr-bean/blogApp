@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
     
-    public function read($number=null){ //根据目录去数据库里找那条数据
-       $data=Blog::with('comments')->latest('number')->get();
-       if($number){
-        $list=Blog::with('comments')->where("number",$number)->first();
+    public function read($title=null){ //根据目录去数据库里找那条数据
+       $data=Blog::with('comments')->latest('title')->get();
+       if($title){
+        $list=Blog::with('comments')->where("title",$title)->first();
          $dataSeach=collect([$list]);
        }else{
         
@@ -24,7 +24,7 @@ class BlogController extends Controller{
           'title' => $request->input('title'),
             'content' => $request->input('content'),
               'time' => $request->input('time'),
-              'number'=>$request->input("number"),
+            
               'name'=>$request->input("userName")
               ];
            Blog::create($data);  
@@ -35,9 +35,9 @@ class BlogController extends Controller{
       return view('update');
     } else if($request->isMethod('post')){
       
-      $seach =$request->input("number");
+      $seach =$request->input("title");
       
-     $data=Blog::where("number",$seach)->first();
+     $data=Blog::where("title",$seach)->first();
        
       return view('update',['data'=>$data]);
     }
@@ -46,13 +46,13 @@ class BlogController extends Controller{
     //修改数据
     $number=$request->number;
     $time=$request->time;
-   $update= Blog::where("number",$number)->first();
+   $update= Blog::where("title",$number)->first();
     
     
     $update->title=$request->title;
     $update->time=$request->time;
     $update->content=$request->content;
-    $update->number=$request->number;
+   
     $update->save();
    }
    public function delete(){

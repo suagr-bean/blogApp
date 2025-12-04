@@ -25,7 +25,7 @@ Route::get('register',function (){
     return view("register");
 })->name("register.now");
 Route::post("/register",[RegisterController::class,"reg"]);
-Route::get('/home/{number}', [BlogController::class, 'read']);
+Route::get('/home/{title}', [BlogController::class, 'read']);
 Route::get('/home',[BlogController::class,'read'])->name("homepage");
 Route::post('/create', [BlogController::class, 'creates']);
 Route::get('/delete',[BlogController::class,'delete']);
