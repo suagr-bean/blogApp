@@ -3,7 +3,7 @@
     <meta name="viewport"content="width=device-width,initial-scale=1">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="">
+<body class="bg-white-100">
     <x-top  topButton="<">登录</x-top>
 <div class="flex flex-col ">
     <h3 class="text-center text-3xl mt-10"></h3>
@@ -17,8 +17,7 @@
 </form>
         <button  id="control">注册</button>
 </div>
-         
-
+      
 </body>
 <style>
 #control{
@@ -47,7 +46,7 @@ border-radius:30px;
     const control=document.getElementById('control');
     control.addEventListener('click',function(){
         
-        window.location.href="{{route('register')}}";
+        window.location.href="{{route('register.now')}}";
     });
     document.addEventListener('click',function (e){
        const nav=e.target.matches("#nav");

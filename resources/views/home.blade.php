@@ -1,3 +1,4 @@
+@props(['data'])
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,7 +7,7 @@
 <style>
     .block{
         position:fixed;
-        background:#f8ecec ;
+        background:white  ;
         top:72px;
         left:0;
         height:83vh;
@@ -22,32 +23,34 @@
     }
     body{
         width:360px;
-        position:relative;
+        height:auto;
+        background:#FAF3E3;
     }
-    #home{
-        width:360px;
-    }
+    
+    
 </style>
 <body>
     
     <x-top topButton="≡" home="true">解放日记</x-top>
-    <x-setting/>
-    <div id="home">
     
-    <x-content :data="$data" ></x-content>
-    <div id="menucont" class="none">
-    <div>
-   
+
+    <div class="fixed bg-blue-100  top-20 w-15 h-15 right-6 p-2 hidden" >
+     <x-setting/>
+</div>
+    <x-content :data="$data" />
+    <div id="menucont"class="none" >
     <x-menu :data=$data />
     
     </div>
     <script>
         window.number=0;
         window.data=@json($data);
+        
     </script>
 </body>
 
 <script>
+   
    window.number=0;
    document.addEventListener('click', function(e) {
       const text=e.target.matches('#nav');

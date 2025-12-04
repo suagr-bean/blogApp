@@ -9,7 +9,7 @@
 <p  
 class=" text-base w-60 p-2 text-2xl">{{$item->title}}</p>
 <p>{{$item->time}} 
-    <button class=" ml-3 border ">作者 </button>
+    <button class=" ml-3 border ">{{$item->name}} </button>
   </p>
 <p class="text-base mt-1 line-clamp-2  ">{{$item->content}} </p>
 </li>

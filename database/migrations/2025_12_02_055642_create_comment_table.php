@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('blog', function (Blueprint $table) {
-            
+        Schema::create('comment', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->integer('number');
+            $table->string('username');
+            $table->text('comment');
+  
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('blog', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comment');
     }
 };

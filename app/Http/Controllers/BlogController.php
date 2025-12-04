@@ -10,7 +10,9 @@ class BlogController extends Controller{
     public function read(){
       
       
-      $data= Blog::all();
+      $data= Blog::with("comments")->get();// 这是填的是model定义的方法名
+      
+      
       return view('home',compact('data'));
     }
     public function creates(Request $request){//增加数据
@@ -18,7 +20,8 @@ class BlogController extends Controller{
           'title' => $request->input('title'),
             'content' => $request->input('content'),
               'time' => $request->input('time'),
-              'number'=>$request->input("number")
+              'number'=>$request->input("number"),
+              'name'=>$request->input("name")
               ];
            Blog::create($data);  
            

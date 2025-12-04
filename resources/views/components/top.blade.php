@@ -9,6 +9,7 @@
        @if($home==true)
  <button id="name"class="w-15 h-15 text-xl ml-18 border rounded-lg  bg-orange-200 "
  >{{Auth::user()->name}}</button>
+ 
        @endif
  @elseif ($home==false)
 <a  class="w-10 h-20 text-xl ml-10 mt-6 text-blue-300  "href="/login"></a>

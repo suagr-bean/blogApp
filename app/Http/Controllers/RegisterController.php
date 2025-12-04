@@ -12,8 +12,11 @@ class RegisterController extends Controller{
   ];
    
    Register::create($data);//这里是用的model的名字
+    return view('register',[
+      'success'=>'注册成功'
+    ]);
   }
-  public function log(Request $request){
+  public function log(Request $request){//登录验证
     
     
     $user=Register::where("user",$request->user)->first();

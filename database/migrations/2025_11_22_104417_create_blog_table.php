@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('blog', function (Blueprint $table) {
             $table->id();
-            
             $table -> string('title');
             $table -> text('content');
-            $table -> string('time');
+            $table -> string('time');// 后面又添加了 name number属性
         });
     }
 
