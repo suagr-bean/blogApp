@@ -7,13 +7,17 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
     
-    public function read(){
-      
-      
-      $data= Blog::with("comments")->get();// 这是填的是model定义的方法名
-      
-      
-      return view('home',compact('data'));
+    public function read($number=null){ //根据目录去数据库里找那条数据
+       $data=Blog::with('comments')->latest('number')->get();
+       if($number){
+        $list=Blog::with('comments')->where("number",$number)->first();
+         $dataSeach=collect([$list]);
+       }else{
+        
+        //$data=Blog::with('comments')->get(); //with带的是model定义的方法名同时查评论
+        $dataSeach=$data;
+       }
+      return view('home',compact('data','dataSeach'));
     }
     public function creates(Request $request){//增加数据
       $data = [
@@ -21,7 +25,7 @@ class BlogController extends Controller{
             'content' => $request->input('content'),
               'time' => $request->input('time'),
               'number'=>$request->input("number"),
-              'name'=>$request->input("name")
+              'name'=>$request->input("userName")
               ];
            Blog::create($data);  
            

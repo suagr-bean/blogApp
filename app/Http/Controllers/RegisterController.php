@@ -26,12 +26,19 @@ class RegisterController extends Controller{
     if($user&&Hash::check($request->password,$user->password)){
        Auth::login($user);
       
-      return redirect()->route("blog");
+      return redirect()->route("homepage");
       
 
     } else{
      return redirect()->route("login")->with("失败");
     }
+  }
+    
+  public function layout(Request $request){
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/home');
   }
 }
 ?>

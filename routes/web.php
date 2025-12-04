@@ -6,6 +6,9 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
 
+Route::get("/person",function (){
+    return view("person");
+});
 Route::get("/show",function (){
     return view('show');
 }); 
@@ -22,12 +25,13 @@ Route::get('register',function (){
     return view("register");
 })->name("register.now");
 Route::post("/register",[RegisterController::class,"reg"]);
-Route::get('/blog', [BlogController::class, 'read'])->name("blog");
-Route::get('/home',[BlogController::class,'read']);
+Route::get('/home/{number}', [BlogController::class, 'read']);
+Route::get('/home',[BlogController::class,'read'])->name("homepage");
 Route::post('/create', [BlogController::class, 'creates']);
 Route::get('/delete',[BlogController::class,'delete']);
 Route::match(['get','post'],'/update',[BlogController::class,'update']);
 Route::post('/change ',[BlogController::class,"change"]);
-Route::post('/text',[CommentController::class,'createComment']);
-   
+Route::post('/comment',[CommentController::class,'createComment']);
+Route::post('/layout',[RegisterController::class,"layout"]);
+Route::post('/addComment',[CommentController::class,"createcomment"]);
 

@@ -4,8 +4,11 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-
-<x-top home="false"/>
-<x-rec />
+    <x-top/>
+    <form method="post" action='layout'>
+    @csrf
+    <button>退出 </button>
+    </form>
 </body>
- </html>
+
+</html>

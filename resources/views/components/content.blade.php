@@ -1,5 +1,5 @@
 
-<div class="border-2 ml-6 w-78 mt-6 flex flex-col h-140 overflow-y-auto overflow-x-hidden
+<div class=" ml-6 w-78 mt-2 flex flex-col h-140 overflow-y-auto overflow-x-hidden
 bg-white-100 shadow-md
 ">
  
@@ -7,9 +7,12 @@ bg-white-100 shadow-md
 <h2 id="cont-title"class="mt-3 p-3 text-xl w-full h-15 ">
   {{$item->title}}
   </h2>
- <h3 id="cont-time"class="w-full p-3 text-base h-4 mt-3 ">
+ <h3 id="cont-time"class="w-full p-1 text-base h-4 mt-3 ">
     {{$item->time}} 
 </h3>
+<h4 class="w-full mt-1 text-base p-1 h-4 mt-3">
+  {{$item->name}}
+</h4>
 <p  id="cont-content"class=" text-base w-full p-3 mt-4 mb-8 ">
     {{$item->content}}  
 </p>
@@ -22,16 +25,15 @@ bg-white-100 shadow-md
 </div>
 @endforeach
 
-<form  method="post" action="/text">
+<form  method="post" action="/addComment">
   @csrf
 <input class="mt-3 w-60 h-30 ml-8 p-2 " type="text" name="comment" placeholder="写评论" class="w-40 h-20 mt-6 ml-5 mb-8">
 @Auth
 <input class="hidden"type="text" name="username" value="{{Auth::user()->name}}">  <!--用户名字-->
 @endAuth
 <input class="hidden" name="number"type="text"id="cont-number" value="{{$item->number}}">  <!--传number对应的-->
-<button class="border text-base w-10 h-6 ml-35 mt-4 ">提交</button>
+<button class="border text-base w-10 h-6 ml-35 mb-8 ">提交</button>
 </form>
-<p class= "w-full border mt-4"></p>
 @endforeach
 </div>
 
@@ -47,19 +49,5 @@ bg-white-100 shadow-md
 }
 </style>
 <script>
-  window.update= function(){
-       
-       const number=window.number;
-       const data =window.data;
-       
-       if(number!=0){
-       const findData=data.find(d=>d.number==number);
-        if(findData){
-      document.getElementById("cont-title").textContent=findData.title;
-    document.getElementById("cont-time").textContent=findData.time;
-document.getElementById("cont-content").innerText=findData.content;
-        
-       }
-      }
-    }
+  
 </script>
