@@ -5,13 +5,11 @@ use Inertia\Inertia;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\recomController;
 Route::get("/person",function (){
     return view("person");
 });
-Route::get("/show",function (){
-    return view('show');
-}); 
+
 Route::get("/send",function(){
     return view('create');
 });
@@ -34,4 +32,6 @@ Route::post('/change ',[BlogController::class,"change"]);
 Route::post('/comment',[CommentController::class,'createComment']);
 Route::post('/layout',[RegisterController::class,"layout"]);
 Route::post('/addComment',[CommentController::class,"createcomment"]);
-
+Route::post('/delete',[BlogController::class,'delete']);
+Route::get('/show',[recomController::class,'random']);
+Route::get('/get-show',[recomController::class,'getRandom'])->name('random');

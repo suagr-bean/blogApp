@@ -1,4 +1,4 @@
-<div id="menu" >
+<div id="menu" class='mb-5'>
 
 <h2 class="text-2xl ml-40 text-black-600 mt-6">目录</h2>
 

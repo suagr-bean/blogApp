@@ -1,5 +1,5 @@
-<div class="w-full h-15  p-3 bg-blue-100">
-<div class="ml-8 flex gap-10 text-base text-orange-300">
+<div class="w-full h-15  p-3 bg-white-100">
+<div class="ml-8 flex gap-10 text-base text-black-300">
     <p id="1"> 推荐</p>
     <p id="2"> 关注</p>
     @Auth

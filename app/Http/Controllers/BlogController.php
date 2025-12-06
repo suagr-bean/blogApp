@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
     
-    public function read($title=null){ //根据目录去数据库里找那条数据
-       $data=Blog::with('comments')->latest('title')->get();
+    public function read($title=null){ 
+      // dd(Blog::find(12));
+      //根据目录去数据库里找那条数据
+       $data=Blog::with('comments')->latest("id")->get();
        if($title){
         $list=Blog::with('comments')->where("title",$title)->first();
          $dataSeach=collect([$list]);
@@ -28,7 +30,7 @@ class BlogController extends Controller{
               'name'=>$request->input("userName")
               ];
            Blog::create($data);  
-           
+         return view('create');
      }
    public function update(Request $request){//根据id查询数据
     if($request->isMethod('get')){
@@ -56,7 +58,7 @@ class BlogController extends Controller{
     $update->save();
    }
    public function delete(){
-    //Blog::find()->delete();
+    
    }
 }
 
