@@ -10,7 +10,7 @@ class Blog extends Model{
     protected $fillable=['title','content','number','name',"time"];//批量填充
     public function  comments(){ //一对多
         return 
-        $this->hasMany(comment::class,'title','title');
+        $this->hasMany(comment::class,'blog_id','id');
     }
 }
     

@@ -23,7 +23,7 @@ Route::get('register',function (){
     return view("register");
 })->name("register.now");
 Route::post("/register",[RegisterController::class,"reg"]);
-Route::get('/home/{title}', [BlogController::class, 'read']);
+Route::get('/home/{id}', [BlogController::class, 'read']);
 Route::get('/home',[BlogController::class,'read'])->name("homepage");
 Route::post('/create', [BlogController::class, 'creates']);
 Route::get('/delete',[BlogController::class,'delete']);
@@ -35,3 +35,4 @@ Route::post('/addComment',[CommentController::class,"createcomment"]);
 Route::post('/delete',[BlogController::class,'delete']);
 Route::get('/show',[recomController::class,'random']);
 Route::get('/get-show',[recomController::class,'getRandom'])->name('random');
+Route::delete('/comment/{id}',[CommentController::class,'deleteCom']);

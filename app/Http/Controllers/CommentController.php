@@ -10,9 +10,16 @@ class CommentController extends Controller{
             
             'username'=>$request->input('username'),
              'comment'=>$request->input('comment'),
-             'title'=>$request->input('title')
+             'blog_id'=>$request->input('id')
+
         ];
          comment::create($data);
+         return redirect()->route('homepage');
+        }
+        
+        public function deleteCom($id){
+            $comment =comment::findOrFail($id);
+            $comment->delete();
+        }
     }
 
-}

@@ -9,9 +9,13 @@
     <form method="post" action='layout'>
     @csrf
     <button>退出 </button>
+    @Auth
+    <input  type="text"placeholder="{{Auth::user()->name}}">
+    <
+    @endAuth
     </form>
 
-    <x-button/>
+    
 </body>
 
 </html>

@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
     
-    public function read($title=null){ 
+    public function read($id=null){ 
       // dd(Blog::find(12));
       //根据目录去数据库里找那条数据
-       $data=Blog::with('comments')->latest("id")->get();
-       if($title){
-        $list=Blog::with('comments')->where("title",$title)->first();
+       $data=Blog::latest()->with('comments')->get();
+       if($id){
+        $list=Blog::with('comments')->find($id);
          $dataSeach=collect([$list]);
        }else{
         
