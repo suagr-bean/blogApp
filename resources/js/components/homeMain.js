@@ -1,7 +1,10 @@
-import {update,save,ajaxdata}from './updateCon.js';
+import {update,save}from './updateCon.js';
+import {deleteCom}from'./deleteCom.js';
+import {delcontent}from'./delete.js';
 document.addEventListener('DOMContentLoaded',function(){
-
-    update ();
-    save();
-    ajaxdata();
+    deleteCom();
+   update ();
+   save();
+   delcontent();
+   
 })

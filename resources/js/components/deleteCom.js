@@ -1,7 +1,17 @@
-document.querySelectorAll('.delcom').forEach(button=>{
-button.addEventListener('click',function (){
-   const id=button.dataset.value;
-   console.log(id);
+
+
+export function deleteCom(){
+  
+  
+   
+
+
+document.addEventListener('click',function (e){
+    const button=e.target.closest(".delcom");
+    
+   const id=button?.dataset?.value;
+   
+  if(id){
    fetch(`/comment/${id}`,{
     method:'DELETE',
     headers:{
@@ -19,5 +29,8 @@ button.addEventListener('click',function (){
    }).catch(error=>{
       console.log("网络错误",error);
    })
-});
-});
+}
+})
+}
+
+

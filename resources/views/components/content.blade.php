@@ -1,42 +1,51 @@
-<div class="w-75 h-[600px] ml-9 mt-5 flex flex-col overflow-y:auto">
-@foreach($data as $item)
-<div class='contents' data-id="{{$item->id}}">
-<h1 class="h1title">{{$item->title}}<h1>
-<h2 class="h2time">{{$item->time}}</h2>
-<h3>{{$item->name}}</h2>
-@if(Auth::check()&&Auth::user()->name==$item->name)
-<button class="update"> 修改</button>
-<button>删除</button>
-<button class="save">保存</button>
-@endif
-<p class="pcontent"
- class="white-space:pre-wrap">{!!nl2br(e($item->content))!!}</p>
-</div>
-<span class="border mt-3"></span>
-<p>评论</p>
+<div class="content ml-6 border-[2px] rounded-[11px] bg-white w-[310px] flex flex-col p-2
+h-[600px] mt-4 overflow-y-auto">
+ 
+<div class="border contents min-h-[600px] "data-id="{{$data->id}}">
+    <h1 class="h1title w-full h-10 py-1 text-2xl">{{$data->title}}</h1>
+    <button class=" w-12 h-10 text-xl rounded-lg">{{$data->name}}</button>
+    @if(Auth::check()&&Auth::user()->name==$data->name)
+    <div class="flex gap-6 mt-3">
+    <button class="delete">删除</button>
+    <button class="update">修改</button>
+    <button class="save">保存</button>
+     </div>
+    @endif
+    <h2 class="h2time w-full text-xl mt-2">{{$data->time}}</h2>
+    <p class="pcontent w-full h-full mt-1 text-base whitespace-pre-wrap
+    ">
+      {{$data->content}}
+    </p>
+    <span class="w-full mt-3  border"></span>
+</div> 
+     
+  
+    <p class="mt-6 w-full text-2xl h-5 ">评论</p>
 
-@foreach($item->comments as $com)
-<div class=" com border-b m-full h-[100px] p-4  bg-orange-100/40">
-<h3>{{$com->comment}}</h3>
-<button class="bg-blue-300/30 border rounded-[8px] ml-8 w-15 h-6"
->{{$com->username}}</button>
-@if(Auth::check()&&Auth::user()->name==$com->username)
-<button  data-value="{{$com->id}}" class="ml-5 delcom">删除{{$com->id}}</button>
-@endif
-<h4>{{$com->created_at}}</h4>
+ @foreach($data->comments as $com)
+<div class="border mb-1">
+ <button>{{$com->username}}</button>
+ <h4>{{$com->created_at}}</h4>
+ <p>{{$com->comment}}</p>
+ @if(Auth::check()&&Auth::user()->name==$com->username)
+ <button class="delcom"data-value="{{$com->id??''}}">删除</button>
+ @endif
 </div>
-@endforeach
-<form method=post action="/comment">
-@csrf
-<input type="text" class="hidden"name="id"
-value="{{$item->id}}">
-@Auth
-<input type="text" class="hidden" name="username"
-value="{{Auth::user()->name}}" >
-<input type="text" name="comment"placeholder="写下评论"
-class="w-70 h-15 ml-4 ">
-<button class="w-20 h-10 ml-21">提交</button>
-@endAuth
-</form>
-@endforeach
+ @endforeach
+
+ 
+ @Auth
+ <form method=post action="/comment">
+  @csrf
+ <input type='text'name="comment" placeholder='写下评论'>
+ <input type="text" name="id" class="hidden" value="{{$data->id}}">
+ 
+ <input type="text"name="username" class="hidden"
+ value="{{Auth::user()->name}}">
+ 
+ <button>提交<button>
+  @endAuth
+ </form>
+
 </div>
+ 

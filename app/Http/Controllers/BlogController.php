@@ -11,14 +11,18 @@ class BlogController extends Controller{
       // dd(Blog::find(12));
       //根据目录去数据库里找那条数据
        $data=Blog::latest()->with('comments')->get();
+       
        if($id){
         $list=Blog::with('comments')->find($id);
-         $dataSeach=collect([$list]);
+         $dataSeach=$list;
        }else{
-        
+        $last=Blog::orderBy('id','desc')->with('comments')->first();
+
         //$data=Blog::with('comments')->get(); //with带的是model定义的方法名同时查评论
-        $dataSeach=$data;
+        $dataSeach=$last;
+        
        }
+      
       return view('home',compact('data','dataSeach'));
     }
     public function creates(Request $request){//增加数据
@@ -32,33 +36,38 @@ class BlogController extends Controller{
            Blog::create($data);  
          return view('create');
      }
-   public function update(Request $request){//根据id查询数据
-    if($request->isMethod('get')){
-      return view('update');
-    } else if($request->isMethod('post')){
-      
-      $seach =$request->input("title");
-      
-     $data=Blog::where("title",$seach)->first();
-       
-      return view('update',['data'=>$data]);
-    }
-   }
-   public function change(Request $request){
+  
+   public function update(Request $request){
     //修改数据
-    $number=$request->number;
+    $id=$request->id;
     $time=$request->time;
-   $update= Blog::where("title",$number)->first();
+    $title=$request->title;
+    $content=$request->content;
     
     
-    $update->title=$request->title;
-    $update->time=$request->time;
-    $update->content=$request->content;
+    $update=Blog::find($id);
    
-    $update->save();
+     if($request->filled('title')){
+      $update->title=$request->title;
+     
+     }
+     if($request->filled('time')){
+      $update->time=$request->time;
+       
+     }
+     if($request->filled('content')){
+      $update->content=$request->content;
+     }
+     $update->save();
+      return redirect()->back();
    }
-   public function delete(){
-    
+  
+
+   public function destroy($id){
+    $blog=Blog::findOrfail($id);
+    $blog->comments()->delete ();
+    $blog->delete ();
+    return redirect->route('/homepage') ;
    }
-}
+  }
 

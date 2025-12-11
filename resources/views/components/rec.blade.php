@@ -1,6 +1,6 @@
 
 @props(['data'])
-<div class="w-[360px] h-[500px]  mt-0 bg-orange-100 flex mt-4">
+<div class="w-[360px] h-[500px]  mt-0 bg-orange-300/50 flex mt-4">
 
 
 <div id="getTitle" class="mt-5 js-card" >

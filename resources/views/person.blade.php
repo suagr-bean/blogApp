@@ -6,6 +6,7 @@
 </head>
 <body>
     <x-top/>
+    <textarea>你好</textarea>
     <form method="post" action='layout'>
     @csrf
     <button>退出 </button>

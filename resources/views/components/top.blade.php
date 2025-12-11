@@ -1,5 +1,5 @@
 @props([ 'topButton' => '','home'=>false])
- <div class="bg-[#fdf6e3] w-full h-18 flex  items-center px-4 shadow-lg">
+ <div class="bg-[#fdf6e3] w-full h-12 flex  items-center px-1 shadow-lg">
     
    
    <button id ="nav" class=" mt-1 ml-6 w-15 h-15 text-3xl  ">{{$topButton}}</button>
@@ -14,6 +14,6 @@
  @elseif ($home==false)
 <a  class="w-10 h-20 text-xl ml-10 mt-6 text-blue-300  "href="/login"></a>
 @else 
-<a  class="w-10 h-20 text-xl ml-10 mt-6 text-blue-300  "href="/login">登录</a>
+<a  class=" w-20 h-8 text-base ml-5 mt-auto text-black   "href="/login">登录</a>
 @endauth
 </div>

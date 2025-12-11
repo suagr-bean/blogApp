@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model{
+    
     protected $table = 'blog';
     public $timestamps = false;
     protected $fillable=['title','content','number','name',"time"];//批量填充
@@ -12,6 +13,8 @@ class Blog extends Model{
         return 
         $this->hasMany(comment::class,'blog_id','id');
     }
-}
+    
+    }
+
     
 

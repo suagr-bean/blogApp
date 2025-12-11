@@ -3,48 +3,52 @@
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css', 'resources/js/components/deleteCom.js',
+    @vite(['resources/css/app.css', 
     'resources/js/components/homeMain.js'])
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <style>
     .block{
         position:fixed;
-        background:white  ;
-        top:70px;
+        background:white;
+        top:53px;
         left:0;
-        height:85vh;
-        width:100%;
+        height:auto;
+        width:180px;
         display:block;  
         overflow-y:auto;
        
     }
     .none{
-        transform : translateY(100px);
+        transform : translateX(60px);
         display:none;
 
     }
-    body{
-        width:360px;
-        height:auto;
-        background:#FAF3E3;
+    #body{
+       
+        background:orange;
+        opacity:0.5
+        padding-top:10px;
+        padding-bottom:15px;
         overflow-y:auto;
     }
     
     
-</style>
-<body id="body">
     
+</style>
+<body >
+    <div id="all">
     <x-top topButton="≡" home="true">解放日记</x-top>
     
-
-    
      <x-setting/>
-  
+    <div id="body">
     <x-content :data="$dataSeach" />
+</div>
+</div>
     <div id="menucont"class="none" >
     <x-menu :data=$data />
     </div>
+    
     
  
 </body>
@@ -53,14 +57,14 @@
     //调试工具
 </script>
 <script>
-    
-     let body=document.getElementById("body");
+     
+     
    document.addEventListener('click', function(e) {
       const text=e.target.matches('#nav');
-       
+       const body=document.getElementById('body');
        
     if (e.target.matches('#nav')) {//改变隐藏菜单显示
-        body.style.overflowY='hidden';
+        
         const sidebar = document.querySelector('#menucont');
         const  button=e.target;
         
@@ -69,8 +73,9 @@
         sidebar.classList.toggle("block");
         sidebar.classList.toggle("none");
         button.textContent=sidebar.classList.contains('block')?'×':'≡';
-        } else
-        body.style.overflowY="auto";
+        body.style.overflow="hidden";
+} 
+        
    });
     
      
