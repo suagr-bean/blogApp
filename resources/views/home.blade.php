@@ -5,33 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css', 
     'resources/js/components/homeMain.js'])
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <style>
     .block{
         position:fixed;
         background:white;
-        top:53px;
-        left:0;
-        height:auto;
-        width:180px;
+        top:50px;
+        left:0px;
+        
+        width:250px;
         display:block;  
         overflow-y:auto;
-       
+      
     }
     .none{
-        transform : translateX(60px);
+        transform : translateX(0px);
         display:none;
 
     }
-    #body{
-       
-        background:orange;
-        opacity:0.5
-        padding-top:10px;
-        padding-bottom:15px;
-        overflow-y:auto;
-    }
+  
     
     
     
@@ -40,10 +33,9 @@
     <div id="all">
     <x-top topButton="≡" home="true">解放日记</x-top>
     
-     <x-setting/>
-    <div id="body">
+     
+    
     <x-content :data="$dataSeach" />
-</div>
 </div>
     <div id="menucont"class="none" >
     <x-menu :data=$data />
@@ -61,7 +53,8 @@
      
    document.addEventListener('click', function(e) {
       const text=e.target.matches('#nav');
-       const body=document.getElementById('body');
+      const content =document.querySelector('.content');
+      
        
     if (e.target.matches('#nav')) {//改变隐藏菜单显示
         
@@ -73,8 +66,12 @@
         sidebar.classList.toggle("block");
         sidebar.classList.toggle("none");
         button.textContent=sidebar.classList.contains('block')?'×':'≡';
-        body.style.overflow="hidden";
-} 
+      if(sidebar.classList=="block"){
+        content.style.overflowY="hidden";
+      }else{
+        content.style.overflowY="auto";
+      }
+}
         
    });
     

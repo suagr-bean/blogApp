@@ -8,5 +8,9 @@ class register extends Model implements Authenticatable{
     use AuthenticatableTrait;
     protected $table ="register";
     protected $fillable=["user","name","password"];
+    protected $hidden=['password'];
+    public function person_data(){
+        return $this->hasOne(person_data::class);
+    }
 }
 ?>

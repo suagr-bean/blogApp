@@ -10,6 +10,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->initForPHPSandboxEnv();
+    
     }
 
     private function initForPHPSandboxEnv(): void

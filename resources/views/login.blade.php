@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <head> 
     <meta name="viewport"content="width=device-width,initial-scale=1">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css'])
 </head>
 <body class="bg-white-100">
     <x-top  topButton="<">登录</x-top>
 <div class="flex flex-col ">
     <h3 class="text-center text-3xl mt-10"></h3>
-    <form action="/login" method=post>
+    <form action="/login" method='post' onsubmit="return true;">
         @csrf
         <input class="ml-20 h-10 mt-30 w-50"  name="user" type=text  placeholder="用户名">
         <input  class="ml-20 h-10 mt-10 w-50"name="password"type=password placeholder="密码">
@@ -17,7 +17,9 @@
 </form>
         <button  id="control">注册</button>
 </div>
-      
+  
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init()</script>
 </body>
 <style>
 #control{
@@ -50,6 +52,7 @@ border-radius:30px;
     });
     document.addEventListener('click',function (e){
        const nav=e.target.matches("#nav");
+       
        if(nav){
         window.location.href="/home";
        }

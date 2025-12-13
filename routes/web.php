@@ -6,6 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\recomController;
+use App\Http\Controllers\PersonController;
 Route::get("/person",function (){
     return view("person");
 });
@@ -22,6 +23,7 @@ Route::get('register',function (){
     session()->forget('success');
     return view("register");
 })->name("register.now");
+Route::get('/home/user',[RegisterController::class,'searchUser']);
 Route::post("/register",[RegisterController::class,"reg"]);
 Route::get('/home/{id}', [BlogController::class, 'read']);
 Route::get('/home',[BlogController::class,'read'])->name("homepage");
@@ -31,7 +33,8 @@ Route::post('/updateContent',[BlogController::class,"update"]);
 Route::post('/comment',[CommentController::class,'createComment']);
 Route::post('/layout',[RegisterController::class,"layout"]);
 Route::post('/addComment',[CommentController::class,"createcomment"]);
-Route::get('/show',[recomController::class,'random']);
+Route::get('/show',[recomController::class,'random'])->name('show');
 Route::get('/get-show',[recomController::class,'getRandom'])->name('random');
 Route::delete('/comment/{id}',[CommentController::class,'deleteCom']);
 Route::delete('/content/{id}',[BlogController::class,'destroy']);
+Route::post('/home/person',[PersonController::class,'savedata']);
