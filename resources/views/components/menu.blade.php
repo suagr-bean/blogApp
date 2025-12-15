@@ -1,3 +1,4 @@
+@props(['data' ])
 <div id="menu" class='  overflow-y-auto min-h-[600px]
 border-[2px] bg-orange-300 rounded-[10px] '>
 

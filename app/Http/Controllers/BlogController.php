@@ -2,28 +2,30 @@
 namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-
+use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
-    
+    protected  $userSect;
+    public function __construct(UserService $userService){
+      $this->userSect=$userService;
+    }
     public function read($id=null){ 
-      // dd(Blog::find(12));
-      //根据目录去数据库里找那条数据
+         
        $data=Blog::latest()->with('comments')->get();
        
-       if($id){
+       if($id){//根据id查特定文章数据
         $list=Blog::with('comments')->find($id);
          $dataSeach=$list;
-       }else{
+         
+      }else{
         $last=Blog::orderBy('id','desc')->with('comments')->first();
-
-        //$data=Blog::with('comments')->get(); //with带的是model定义的方法名同时查评论
         $dataSeach=$last;
-        
        }
-      
-      return view('home',compact('data','dataSeach'));
+        $viewdata=[
+          'data'=>$data,'dataSeach'=>$dataSeach
+        ];
+      return view('home',$viewdata);
     }
     public function creates(Request $request){//增加数据
       $data = [

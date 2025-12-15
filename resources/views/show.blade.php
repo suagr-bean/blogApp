@@ -7,7 +7,7 @@
 <body>
     
 <div class="bg-orange-400/30">
-<x-top home="false"/>
+<x-top/>
 <a class=" border fixed top-[220px] left-60 bg-orange-300 rounded-lg  text-blue-600"href="/send">✍🏻写文章</a>
 <x-rec :data='$showdata'/>
 <a id="read"href="/home/{{$showdata->id}}"

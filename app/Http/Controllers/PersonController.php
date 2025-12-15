@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use  App\Models\person_data;
+
 use Illuminate\Support\Facades\Storage;
 class PersonController extends Controller
 {
@@ -22,11 +22,20 @@ class PersonController extends Controller
     $url=Storage::disk("public")->url($path);
     return response()->json([
         'message'=>"成功",
-         'data'=>[
-            'url'=>$url,
-            'name'=>$request->name,
-            'profile'=>$request->profile
-         ] 
     ],200);
+   }
+  
+   protected $persondata ;
+   public function __construct(UserService $userService){
+      $this->persondata=$userService;
+   }
+
+   public function show(Request $request){
+     
+      $name=$request->name;
+      $data=$this->persondata->show($name);
+      $content=$this->persondata->showcontent($name);
+      
+     return view("PersonSet",compact("data","content"));
    }
 }

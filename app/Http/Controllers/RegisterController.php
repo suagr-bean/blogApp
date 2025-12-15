@@ -4,24 +4,33 @@ use App\Models\Register;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Services\UserService;
+use App\Services\PersonService;
 class RegisterController extends Controller{
+  protected $person;
+  public function __construct(PersonService $personService){
+    $this->person=$personService;
+  }
   public function reg (Request $request){
     $data =["user"=>$request->user,
             "name"=>$request->name,
             "password"=>Hash::make($request->password)
   ];
-   
-   Register::create($data);//这里是用的model的名字
-    return view('register',[
+    $reg= Register::create($data);//这里是用的model的名字
+  
+    $name=$request->name;
+    $img=$request->img;
+    $profile=$request->profile;
+   $savePerson= $this->person->savedata($name,$img,$profile);
+    if($savePerson&&$reg){
+ return view('login',[
       'success'=>'注册成功'
     ]);
+  } else{
+    return view('register');
+  }
   }
 
-  protected $userService;
-  public function __construct(UserService $userService){
-    $this->userService=$userService; //左边属性名
-  }
+
   public function log(Request $request){//登录验证
     
     
@@ -30,14 +39,7 @@ class RegisterController extends Controller{
     
     
     if($user&&Hash::check($request->password,$user->password)){
-       Auth::login($user);
-       
-       if($user->name){
-       $userData= $this->userService->userImage($user->name);
-       dd($userData);
-       }
-      
-       
+       Auth::login($user); 
       return redirect()->route('homepage');
       
 
@@ -59,4 +61,3 @@ class RegisterController extends Controller{
       return view ('user',compact('user'));
    }
 }
-?>

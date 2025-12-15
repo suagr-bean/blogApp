@@ -1,3 +1,4 @@
+@props(['data'])
 <div class="content ml-6 border-[2px] rounded-[11px]  w-[310px] flex flex-col p-2
 max-h-[530px] bg-orange-200/30 overflow-y-auto mt-15">
  
@@ -5,9 +6,9 @@ max-h-[530px] bg-orange-200/30 overflow-y-auto mt-15">
     
     <h1 class=" h1title w-full h-15 py-1 text-2xl">{{$data->title}}</h1>
     <a class=" border mt-4 bg-orange-300 rounded-lg ml-45 text-blue-600"href="/send">✍🏻写文章</a>
-    
+    <form methon="get"action='/person/{{$data->name}}'>
     <button class=" w-12 h-10  text-xl rounded-lg">{{$data->name}}</button>
-
+</form>
     @if(Auth::check()&&Auth::user()->name==$data->name)
     <div class="flex gap-6 mt-3">
     <button class="delete">删除</button>

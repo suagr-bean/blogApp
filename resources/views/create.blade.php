@@ -4,7 +4,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
     </<head>
     <body>
-       <x-top  topButton=""></x-top>
+       <x-top></x-top>
        
      <div class="h-140 w-full mt-8 flex flex-col">
         

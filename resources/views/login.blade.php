@@ -7,7 +7,7 @@
     <x-top  topButton="<">登录</x-top>
 <div class="flex flex-col ">
     <h3 class="text-center text-3xl mt-10"></h3>
-    <form action="/login" method='post' onsubmit="return true;">
+    <form action="/login" method='post' >
         @csrf
         <input class="ml-20 h-10 mt-30 w-50"  name="user" type=text  placeholder="用户名">
         <input  class="ml-20 h-10 mt-10 w-50"name="password"type=password placeholder="密码">

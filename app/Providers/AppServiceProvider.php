@@ -4,12 +4,12 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\View;
+use App\View\Components\Top;
 class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->initForPHPSandboxEnv();
     
     }
 

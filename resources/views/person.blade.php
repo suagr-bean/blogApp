@@ -4,9 +4,10 @@
 @vite(['resources/css/app.css', 'resources/js/components/person.js'])
 </head>
 <body>
-    <x-top/>
+    <x-top />
+    
     <div class="flex flex-col">
-    <div class="w-80 p-5 mt-8 ml-3 h-[540px] border ">
+    <div class="w-80 p-5 mt-8 ml-3 h-[540px] border "> 
     @auth
     <form id="fetchform" action='/home/person'>
         @csrf

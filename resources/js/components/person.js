@@ -1,8 +1,8 @@
-import {fetchdata} from "./personfetch.js";
-const file=document.querySelector(".file");
+
+const file=document.querySelector(".choose");
 file.addEventListener('change',function(event){
  const image=event.target.files[0];
- const show=document.querySelector('.show');
+ const show=document.querySelector('.img-show');
   if(image){
     const read =new FileReader();
     
@@ -18,4 +18,4 @@ file.addEventListener('change',function(event){
   }
      
 });
-fetchdata();
+

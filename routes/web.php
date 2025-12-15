@@ -7,10 +7,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\recomController;
 use App\Http\Controllers\PersonController;
-Route::get("/person",function (){
-    return view("person");
-});
-
+Route::get("/person-set",[PersonController::class,'show']);
+Route::get("/person/{name}",[PersonController::class,"show"]);
 Route::get("/send",function(){
     return view('create');
 });
@@ -38,3 +36,4 @@ Route::get('/get-show',[recomController::class,'getRandom'])->name('random');
 Route::delete('/comment/{id}',[CommentController::class,'deleteCom']);
 Route::delete('/content/{id}',[BlogController::class,'destroy']);
 Route::post('/home/person',[PersonController::class,'savedata']);
+

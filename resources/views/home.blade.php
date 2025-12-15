@@ -31,7 +31,7 @@
 </style>
 <body >
     <div id="all">
-    <x-top topButton="≡" home="true">解放日记</x-top>
+    <x-top button="≡" >解放日记</x-top>
     
      
     
