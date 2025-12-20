@@ -1,6 +1,6 @@
 @props(['data'])
 <div class="content ml-6 border-[2px] rounded-[11px]  w-[310px] flex flex-col p-2
-max-h-[530px] bg-orange-200/30 overflow-y-auto mt-15">
+max-h-[530px] min-h-[500px] bg-orange-200/30 overflow-y-auto mt-15">
  
 <div class="border contents "data-id="{{$data->id}}">
     
@@ -41,7 +41,7 @@ max-h-[530px] bg-orange-200/30 overflow-y-auto mt-15">
  @auth
  <form method=post action="/comment">
   @csrf
- <input class="mt-4" type='text'name="comment" placeholder='写下评论'>
+ <input class="mt-4 h-10 w-full " type='text'name="comment" placeholder='写下你宝贵的评论'>
  <input type="text" name="id" class="hidden" value="{{$data->id}}">
  
  <input type="text"name="username" class="hidden"

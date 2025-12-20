@@ -18,9 +18,9 @@ class RegisterController extends Controller{
     $reg= Register::create($data);//这里是用的model的名字
   
     $name=$request->name;
-    $img=$request->img;
+    $img=$request->file('img');
     $profile=$request->profile;
-   $savePerson= $this->person->savedata($name,$img,$profile);
+   $savePerson= $this->person->saveperson($name,$profile,$img);
     if($savePerson&&$reg){
  return view('login',[
       'success'=>'注册成功'
@@ -49,6 +49,7 @@ class RegisterController extends Controller{
   }
     
   public function layout(Request $request){//退出
+    
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();

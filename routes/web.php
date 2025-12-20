@@ -10,7 +10,7 @@ use App\Http\Controllers\PersonController;
 Route::get("/person-set",[PersonController::class,'show']);
 Route::get("/person/{name}",[PersonController::class,"show"]);
 Route::get("/send",function(){
-    return view('create');
+    return view('createCont');
 });
 Route::get("/login",function (){
  return view('login');
@@ -31,9 +31,8 @@ Route::post('/updateContent',[BlogController::class,"update"]);
 Route::post('/comment',[CommentController::class,'createComment']);
 Route::post('/layout',[RegisterController::class,"layout"]);
 Route::post('/addComment',[CommentController::class,"createcomment"]);
-Route::get('/show',[recomController::class,'random'])->name('show');
-Route::get('/get-show',[recomController::class,'getRandom'])->name('random');
+Route::get('/show',[recomController::class,'show']);
+Route::get('/show/random',[recomController::class,'random'])->name('show');
 Route::delete('/comment/{id}',[CommentController::class,'deleteCom']);
 Route::delete('/content/{id}',[BlogController::class,'destroy']);
-Route::post('/home/person',[PersonController::class,'savedata']);
 

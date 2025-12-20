@@ -35,10 +35,10 @@
     
      
     
-    <x-content :data="$dataSeach" />
+    <x-content :data="$data" />
 </div>
     <div id="menucont"class="none" >
-    <x-menu :data=$data />
+    <x-menu />
     </div>
     
     

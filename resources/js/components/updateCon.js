@@ -81,7 +81,7 @@ export function save(){
 }
 export function fetchData(){
    
-   const url='/updateContent';
+   const url='/show/random';
    fetch(url,{
       method:"POST",
       headers:{

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Services\UserService;
+use App\Services\PersonShowService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -26,16 +26,16 @@ class PersonController extends Controller
    }
   
    protected $persondata ;
-   public function __construct(UserService $userService){
-      $this->persondata=$userService;
+   public function __construct(PersonShowService $personShowService){
+      $this->persondata=$personShowService;
    }
 
    public function show(Request $request){
      
       $name=$request->name;
-      $data=$this->persondata->show($name);
-      $content=$this->persondata->showcontent($name);
+      $data=$this->persondata->showTitle($name);
+      $content=$this->persondata->showContent($name);
       
-     return view("PersonSet",compact("data","content"));
+    return view("Person",compact("data","content"));
    }
 }

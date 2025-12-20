@@ -2,17 +2,18 @@
 namespace App\Services;
 use  App\Models\person_data;
 class PersonService{
-    public function savePerson($name,$profile,$img);
-      $image=file("img");
-    $path=$image->store('image','public');
+    public function savePerson($name,$profile,$img){
+      
+    $path=$img->store('image','public');
     $save=person_data::create([
         'name'=>$name,
-        'path'=>$path,
-        'profile'=>profile
+        'image'=>$path,
+        'profile'=>$profile
     ]);
-    if(save){
+    if($save){
        return true;
     } else{
       return false;
     }
+  }
 }

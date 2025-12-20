@@ -7,13 +7,13 @@
     <x-top />
    <div class="flex flex-col">
      <h3 class="text-center text-3xl mt-3">注册</h3>
-    <form action="register" method=post>
+    <form action="register" method="post" enctype="multipart/form-data">
         @csrf
         
         <input class="ml-20 h-10 w-50 mt-20" name="user" type=text placeholder="用户名">
         <input class="ml-20 h-10 w-50 mt-10" type=password placeholder="密码" name="password">
         <input class="ml-20 h-10 w-50 mt-10" name="name" type="text" placeholder="名字">
-        <input  class="ml-20 h-10 w-50 mt-10" name="porfile" type="text"placeholder="个人介绍">
+        <input  class="ml-20 h-10 w-50 mt-10" name="profile" type="text"placeholder="个人介绍">
 <label class="img flex">
         <input type="file" name="img" accept="image/*" class="hidden choose" >
         <img class="img-show mt-3 ml-35 w-[60px] h-[60px] rounded-full border"src="#">

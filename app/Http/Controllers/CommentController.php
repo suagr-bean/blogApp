@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller{
+    //写评论
     public function createComment(Request $request){
         $data=[
             

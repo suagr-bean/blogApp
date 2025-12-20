@@ -4,10 +4,10 @@
  @vite(['resources/css/app.css'])
 </head>
 <body>
-    <x-top/>
+    <x-top>解放日记</x-top>
     <div class="w-[300px] h-[550px] border rounded-[30px] bg-orange-300 ml-8 mt-10 ">
     <x-persontitle :data=$data/>
-    <x-personshow :content=$content/>
+    <x-personContent :content=$content/>
 </div> 
 <script src="//cdn.jsdelivr.net/npm/eruda"></script>
 <script>eruda.init()</script>

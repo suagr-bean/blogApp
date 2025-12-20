@@ -2,32 +2,24 @@
 namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
-use App\Services\UserService;
+use App\Services\ShowBlogService;
 use Illuminate\Support\Facades\Auth;
 class BlogController extends Controller{
 
-    protected  $userSect;
-    public function __construct(UserService $userService){
-      $this->userSect=$userService;
-    }
+   protected $blogservices;
+   public function __construct(ShowBlogService $show){
+    $this->blogservices=$show;
+   }
     public function read($id=null){ 
-         
-       $data=Blog::latest()->with('comments')->get();
-       
-       if($id){//根据id查特定文章数据
-        $list=Blog::with('comments')->find($id);
-         $dataSeach=$list;
-         
-      }else{
-        $last=Blog::orderBy('id','desc')->with('comments')->first();
-        $dataSeach=$last;
-       }
-        $viewdata=[
-          'data'=>$data,'dataSeach'=>$dataSeach
-        ];
-      return view('home',$viewdata);
+        if($id==null) {
+         $data=$this->blogservices->readBlog();
+        }else {
+          $data=$this->blogservices->readIdBlog($id);
+        }
+     return view('home',compact("data"));
     }
-    public function creates(Request $request){//增加数据
+
+    public function creates(Request $request){//增加文章数据
       $data = [
           'title' => $request->input('title'),
             'content' => $request->input('content'),
@@ -36,11 +28,11 @@ class BlogController extends Controller{
               'name'=>$request->input("userName")
               ];
            Blog::create($data);  
-         return view('create');
+         return view('home');
      }
   
    public function update(Request $request){
-    //修改数据
+    //修改数据 这里也要加身份验证
     $id=$request->id;
     $time=$request->time;
     $title=$request->title;
@@ -66,6 +58,7 @@ class BlogController extends Controller{
   
 
    public function destroy($id){
+    //这里要验证用户身份
     $blog=Blog::findOrfail($id);
     $blog->comments()->delete ();
     $blog->delete ();

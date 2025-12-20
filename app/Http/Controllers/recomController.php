@@ -8,11 +8,11 @@ class recomController extends Controller{
     public function random (){
        $showdata=Blog::inRandomOrder()->first();
        
-       return view('show',compact('showdata'));
+       return response()->json($showdata);
     }
-    public function getRandom(){
-        $showdata=Blog::inRandomOrder()->first();
-        
-        return response()->json($showdata);
+    public function show(){
+      $data=Blog::inRandomOrder()->first();
+       return view('ContentShow',compact('data'));
     }
+
 }
